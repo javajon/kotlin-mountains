@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mountains-server
+  name: mountains-server
+spec:
+  ports:
+  - port: 8321
+    targetPort: grpc
+  selector:
+    app: mountains-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mountains-server
+  labels:
+    app: mountains-server
+spec:
+  selector:
+    matchLabels:
+      app: mountains-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mountains-server
+    spec:
+      containers:
+      - name: mountains-server
+        image: $REGISTRY/mountains-server:0.1.0
+        imagePullPolicy: Always
+        ports:
+          - name: grpc
+            containerPort: 8321
+        env:
+          - name: GRPC_VERBOSITY
+            value: "INFO"
+          - name: GRPC_TRACE
+            value: "all"
