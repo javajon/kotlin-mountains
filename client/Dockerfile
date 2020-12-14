@@ -1,8 +1,8 @@
 FROM node:14 AS build
 WORKDIR /usr/src/app
 COPY mountains.proto ./
-COPY client/package*.json ./
-COPY client/src/ ./
+COPY package*.json ./
+COPY src/ ./
 RUN ["npm", "install", "--production"]
 
 FROM gcr.io/distroless/nodejs:14
