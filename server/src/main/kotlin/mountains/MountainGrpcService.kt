@@ -6,7 +6,6 @@ import java.util.UUID
 import java.util.Collections
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
-//import mountains.MountainServiceGrpc
 import mountains.Mountains.Empty
 import mountains.Mountains.Mountain
 import mountains.Mountains.MountainList
