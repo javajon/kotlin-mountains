@@ -1,3 +1,4 @@
+# base/mountains-client.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -30,7 +31,7 @@ spec:
     spec:
       containers:
       - name: mountains-client
-        image: $REGISTRY/mountains-client:0.1.0
+        image: mountains-client:0.1.0  # Kustomize will update this
         imagePullPolicy: Always
         ports:
           - name: web

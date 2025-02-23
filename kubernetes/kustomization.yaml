@@ -1,0 +1,15 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- base/mountains-server.yaml
+- base/mountains-client.yaml
+
+images:
+- name: mountains-server
+  newName: ${REGISTRY}/mountains-server
+  newTag: 0.1.0
+- name: mountains-client
+  newName: ${REGISTRY}/mountains-client
+  newTag: 0.1.0
